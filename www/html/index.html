@@ -1,0 +1,196 @@
+<html>
+    <head>
+        <style>
+            td {
+            border: 2px solid #333;
+            height: 100px;
+            width: 100px;
+            text-align: center;
+            vertical-align: middle;
+            font-family: 'Comic Sans MS', cursive;
+            font-size: 70px;
+            cursor: pointer;
+            }
+
+            table {
+            border-collapse: collapse;
+            position: absolute;
+            left: 50%;
+            margin-left: -155px;
+            top: 50px;
+            }
+
+            table tr:first-child td {
+            border-top: 0;
+            }
+
+            table tr:last-child td {
+            border-bottom: 0;
+            }
+
+            table tr td:first-child {
+            border-left: 0;
+            }
+
+            table tr td:last-child {
+            border-right: 0;
+            }
+
+            #endgame {
+            display: none;
+            width: 500px;
+            top: 120px;
+            background-color: rgba(2015, 133, 63, 0.8);
+            position: absolute;
+            left: 50%;
+            margin-left: -250px;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            text-align: center;
+            border-radius: 5px;
+            color: white;
+            font-size: 2em;
+            }
+
+            input {
+            min-width: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="endText"></h1>
+        <table id="table">
+        </table>
+        <div id="endgame">
+        <div class="text"></div>
+        </div>
+        <form>
+        <input type="text" id="number" placeholder="Enter a number to generate a tic tac toe board">
+        <button id="start">Play</button>
+        </form>
+
+        <script type="text/javascript">
+            let xIsNext = true;
+            let boardArr = [];
+            const table = document.getElementById('table');
+            const inputNumber = document.getElementById('number');
+            const startButton = document.getElementById('start');
+            const endGameDiv = document.getElementById('endgame');
+
+            const endGame = (char) => {
+            endGameDiv.style.display = 'block';
+            endGameDiv.innerHTML = `Congratulations player ${char}! You've won. Refresh to play again!`;
+            };
+
+            const validateClick = (e) => {
+            const charToUse = xIsNext ? 'X' : 'O';
+            const id = e.target.id;
+            const row = e.target.getAttribute('data-row');
+            const column = e.target.getAttribute('data-column');
+            if (boardArr[row][column] === null) {
+                boardArr[row][column] = charToUse
+                document.getElementById(id).innerText = boardArr[row][column];
+                xIsNext = !xIsNext;
+                checkWin(boardArr) ? endGame(charToUse === 'X' ? 'O' : 'X') : null;
+            };
+            };
+
+            const printBoard = (arr) => {
+            let idCount = 0;
+            for (let i = 0; i < arr.length; i++) {
+                const tr = document.createElement('tr');
+                for (let j = 0; j < arr.length; j++) {
+                const td = document.createElement('td');
+                td.addEventListener('click', validateClick, false);
+                td.setAttribute('id', idCount);
+                td.setAttribute('data-column', j);
+                td.setAttribute('data-row', i);
+                tr.appendChild(td);
+                idCount++;
+                }
+                table.appendChild(tr);
+            }
+            };
+
+            const generateBoard = (n) => {
+            const arr = [];
+            for (let i = 0; i < n; i++) {
+                const subArr = [];
+                for (let j = 0; j < n; j++) {
+                subArr.push(null);
+                }
+                arr.push(subArr);
+            }
+            return arr;
+            };
+
+            const checkWin = (arr) => {
+            for (let column = 0; column < arr.length; column++) {
+                const caseMatch = arr[column][0];
+                if (caseMatch !== null) {
+                for (let row = 0; row < arr.length; row++) {
+                    if (caseMatch !== arr[column][row]) {
+                    break;
+                    } else {
+                    if (row === arr.length - 1) {
+                        return true;
+                    }
+                    }
+                }
+                }
+            }
+            for (let column = 0; column < arr.length; column++) {
+                const caseMatch = arr[0][column];
+                if (caseMatch !== null) {
+                for (let row = 0; row < arr.length; row++) {
+                    if (caseMatch !== arr[row][column]) {
+                    break;
+                    } else {
+                    if (row === arr.length - 1) {
+                        return true;
+                    }
+                    }
+                }
+                }
+            }
+            for (let column = 0; column < arr.length; column++) {
+                const caseMatch = arr[0][0];
+                if (caseMatch !== null) {
+                for (let row = 0; row < arr.length; row++) {
+                    if (caseMatch !== arr[row][row]) {
+                    break;
+                    } else {
+                    if (row === arr.length - 1) {
+                        return true;
+                    }
+                    }
+                }
+                }
+            }
+            for (let column = 0; column < arr.length; column++) {
+                const caseMatch = arr[0][arr.length - 1];
+                if (caseMatch !== null) {
+                for (let row = 0; row < arr.length; row++) {
+                    if (caseMatch !== arr[row][arr.length - 1 - row]) {
+                    break;
+                    } else {
+                    if (row === arr.length - 1) {
+                        return true;
+                    }
+                    }
+                }
+                }
+            }
+            return false;
+            };
+
+            const startGame = (e) => {
+            e.preventDefault();
+            boardArr = generateBoard(inputNumber.value);
+            printBoard(boardArr);
+            };
+
+            startButton.addEventListener('click', startGame, false);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "cypress": "^13.13.1"
+  },
+  "name": "qe-challenge",
+  "description": "[Interview Assignment](https://docs.google.com/document/d/1KZNv3CxQHjMTb8ibQh37pQSNKuTPAP_GPyGonMYPL0Y/edit)",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
