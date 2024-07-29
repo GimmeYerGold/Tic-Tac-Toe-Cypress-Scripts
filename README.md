@@ -1,5 +1,7 @@
 [Interview Assignment](https://docs.google.com/document/d/1KZNv3CxQHjMTb8ibQh37pQSNKuTPAP_GPyGonMYPL0Y/edit)
 
+## Update: Jump to the bottom to read instructions for my running Cypress Scripts! 👇
+
 ## Tic Tac Toe Game
 This is simple tic-tac-toe game.
 
@@ -20,3 +22,8 @@ Do not follow these steps without trying to run the application first.  It may w
 -  make sure you have [Node.js](https://nodejs.org/en) installed (current version is Node V22.5.1)
 -  You may need to reinstall the packages if you're on a different operating system -- delete the `node_modules` directory along with `package.json`.  Then do `npm install express`.
 -  if you're using a VPN turn it off or uninstall it altogether.
+
+## Running the Cypress Tests:
+Make sure you have [Cypress](https://docs.cypress.io/guides/getting-started/installing-cypress) installed first!
+Navigate to the 'cypress' folder and open the terminal. Run `npx cypress open` and select end-to-end testing.
+Open `ticTacToe.cy.js` to see the scripts run! You can uncomment the pauses to step through the tests. Enjoy!
