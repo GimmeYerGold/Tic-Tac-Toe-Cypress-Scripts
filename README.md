@@ -1,6 +1,14 @@
 [Interview Assignment](https://docs.google.com/document/d/1KZNv3CxQHjMTb8ibQh37pQSNKuTPAP_GPyGonMYPL0Y/edit)
 
-## Update: Jump to the bottom to read instructions for my running Cypress Scripts! 👇
+## Update: Responses to the Tic Tac Toe QE Challenges! 👇
+⭕️❌ (Tic Tac Toe Game Bugs and Feedback)[https://docs.google.com/document/d/17ejbWjdwtK1PYlqY0tus-jIXf5OqRnQ15_Pq-F6Y5_0/edit?usp=sharing]
+
+## Running the Cypress Tests:
+🤖 Make sure you have [Cypress](https://docs.cypress.io/guides/getting-started/installing-cypress) installed first!
+Navigate to the 'cypress' folder and open the terminal. Run `npx cypress open` and select the e2e testing directory.
+Open `ticTacToe.cy.js` to see the scripts run! Custom commands live inside `commands.js` You can uncomment the pauses in the spec file to step through the tests. Enjoy!
+
+🎥 (Watch the video of me walking through the Tic Tac Toe Cypress scripts HERE)[https://www.youtube.com/watch?v=4xE8F20vRFw&ab_channel=MyDadisDraculaComics]
 
 ## Tic Tac Toe Game
 This is simple tic-tac-toe game.
@@ -23,7 +31,3 @@ Do not follow these steps without trying to run the application first.  It may w
 -  You may need to reinstall the packages if you're on a different operating system -- delete the `node_modules` directory along with `package.json`.  Then do `npm install express`.
 -  if you're using a VPN turn it off or uninstall it altogether.
 
-## Running the Cypress Tests:
-Make sure you have [Cypress](https://docs.cypress.io/guides/getting-started/installing-cypress) installed first!
-Navigate to the 'cypress' folder and open the terminal. Run `npx cypress open` and select end-to-end testing.
-Open `ticTacToe.cy.js` to see the scripts run! You can uncomment the pauses to step through the tests. Enjoy!
